@@ -1,12 +1,26 @@
-# React + Vite
+# Enterprise Platform
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This assignment is a demo Single Page Application (SPA) designed to showcase a Enterprise Platform:
 
-Currently, two official plugins are available:
+### Widget Application
+Default Template with Interactive Widgets. The app loads a default dashboard layout and allows users to customize it by adding or removing widgets such as:
+🕒 Clock (real-time)
+🌤️ Weather (mocked data)
+🔢 Counter (increment/decrement)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Widgets can be dragged from a sidebar panel into the dashboard, where they can be sorted, rearranged, or removed.
 
-## Expanding the ESLint configuration
+## How to Run
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### 1. Clone the repository
+git clone https://github.com/your-username/widget-dashboard.git
+cd widget-dashboard
+
+### 2. Install dependencies
+npm install
+
+### 3. Start development server
+npm run dev
+
+## 🛠 Tech Stack
+React, Vite, Tailwind CSS, Zustand, @dnd-kit
