@@ -11,7 +11,7 @@ const Button = ({
       type={type}
       onClick={onClick}
       disabled={disabled}
-      className={`rounded ${className}`}
+      className={`px-2 py-2 rounded cursor-pointer ${className}`}
     >
       {icon && <span className="flex-shrink-0">{icon}</span>}
       {children}

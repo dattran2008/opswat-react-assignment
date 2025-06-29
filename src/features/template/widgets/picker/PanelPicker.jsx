@@ -1,9 +1,4 @@
 import { useDraggable, useDroppable } from "@dnd-kit/core";
-import {
-  SortableContext,
-  verticalListSortingStrategy,
-} from "@dnd-kit/sortable";
-
 import { availableWidgets } from "../../WidgetList";
 import { useWidgetStore } from "@/store/widget";
 
@@ -39,7 +34,7 @@ const WidgetPickerPanel = ({ mode }) => {
   });
 
   return (
-    <aside className="w-60 border-r p-4 bg-white">
+    <aside className="w-90 border-r p-4 bg-white">
       <h3 className="font-semibold mb-3 text-gray-700">Available Widgets</h3>
       <div id="panel-dropzone" ref={setPanelRef}>
         {availableWidgets.map(({ id, component }) => {
@@ -52,8 +47,6 @@ const WidgetPickerPanel = ({ mode }) => {
             );
           }
         })}
-        {/* <SortableContext items={[]} strategy={verticalListSortingStrategy}>
-        </SortableContext> */}
       </div>
     </aside>
   );

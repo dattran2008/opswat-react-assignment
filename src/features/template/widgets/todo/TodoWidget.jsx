@@ -15,7 +15,7 @@ const TodoWidget = () => {
     );
 
   return (
-    <div className="text-left p-4 border rounded shadow">
+    <div className="text-left p-4 rounded-xl border shadow">
       <h4 className="font-semibold mb-2">Todo List</h4>
       <ul>
         {todos.map((item, index) => (

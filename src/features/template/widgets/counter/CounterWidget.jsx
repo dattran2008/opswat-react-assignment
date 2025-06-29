@@ -6,7 +6,7 @@ const CounterWidget = () => {
   const [count, setCount] = useState(0);
 
   return (
-    <div className="p-4 border rounded shadow bg-white">
+    <div className="p-4 rounded-xl border shadow bg-white">
       <div className="flex items-center gap-2 mb-2">
         <h2 className="font-semibold">Counter</h2>
       </div>
