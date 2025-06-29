@@ -6,21 +6,40 @@ const TodoWidget = () => {
     { text: "Write code, prepare presentation", done: false },
     { text: "Write journal", done: false },
   ]);
+  const [newTask, setNewTask] = useState("");
 
-  const toggle = (index) =>
+  const handleChangeNewTask = (e) => {
+    setNewTask(e.target.value.trim());
+  };
+
+  const handleAddTask = () => {
+    if (newTask !== "") {
+      setTodos((prev) => [
+        ...prev,
+        {
+          text: newTask,
+          done: false,
+        },
+      ]);
+      setNewTask("");
+    }
+  };
+
+  const toggle = (index) => {
     setTodos((prev) =>
       prev.map((item, i) =>
         i === index ? { ...item, done: !item.done } : item
       )
     );
+  };
 
   return (
     <div className="text-left p-4 rounded-xl border shadow">
       <h4 className="font-semibold mb-2">Todo List</h4>
-      <ul>
+      <ul className="mb-4">
         {todos.map((item, index) => (
           <li
-            key={index}
+            key={`${item}-${index}`}
             className="cursor-pointer truncate overflow-hidden whitespace-nowrap"
             onClick={() => toggle(index)}
           >
@@ -31,6 +50,21 @@ const TodoWidget = () => {
           </li>
         ))}
       </ul>
+      <div className="flex gap-2">
+        <input
+          type="text"
+          value={newTask}
+          onChange={handleChangeNewTask}
+          className="flex-1 px-2 py-1 border rounded text-sm"
+          placeholder="Add new task..."
+        />
+        <button
+          onClick={handleAddTask}
+          className="px-3 py-1 bg-blue-500 hover:bg-blue-600 text-white text-sm rounded"
+        >
+          Add
+        </button>
+      </div>
     </div>
   );
 };

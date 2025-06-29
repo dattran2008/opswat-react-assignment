@@ -15,13 +15,6 @@ const HomePage = () => {
         >
           Widget Application
         </Button>
-
-        {/* <button
-          onClick={() => alert("Jira Application is not implemented yet.")}
-          className="bg-gray-400 hover:bg-gray-500 text-white px-6 py-3 rounded shadow text-lg"
-        >
-          Jira Application
-        </button> */}
       </div>
     </div>
   );

@@ -6,9 +6,9 @@ This assignment is a demo Single Page Application (SPA) designed to showcase a E
 Default Template with Interactive Widgets. The app loads a default dashboard layout and allows users to customize it by adding or removing widgets such as:
 
 - 🕒 Clock (real-time)
-- 🌤️ Weather (mocked data)
+- 🌤️ Weather
 - 🔢 Counter (increment/decrement)
-
+- 📑 Todo List
 Widgets can be dragged from a sidebar panel into the dashboard, where they can be sorted, rearranged, or removed.
 
 ## How to Run
