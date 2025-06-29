@@ -5,17 +5,9 @@ import {
 } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 
-import ClockWidget from "@/features/template/widgets/clock/ClockWidget";
-import CounterWidget from "@/features/template/widgets/counter/CounterWidget";
-import WeatherWidget from "@/features/template/widgets/weather/WeatherWidget";
-import EmptyDropZone from "@/components/EmptyDropZone";
 import { useWidgetStore } from "@/store/widget";
-
-const widgetMap = {
-  clock: <ClockWidget />,
-  counter: <CounterWidget />,
-  weather: <WeatherWidget />,
-};
+import EmptyDropZone from "@/components/EmptyDropZone";
+import { widgetList } from "../WidgetList";
 
 const SortableItem = ({ id, children }) => {
   const { attributes, listeners, setNodeRef, transform, transition } =
@@ -51,7 +43,7 @@ const WidgetDashboard = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
             {widgets.map(({ id, type }) => (
               <SortableItem key={id} id={id}>
-                {widgetMap[type]}
+                {widgetList[type]}
               </SortableItem>
             ))}
           </div>

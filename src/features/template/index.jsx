@@ -17,8 +17,7 @@ import { useWidgetStore } from "@/store/widget";
 
 const WidgetApp = () => {
   const { setNodeRef } = useDroppable({ id: "dashboard-dropzone" });
-  const { widgets, setWidgets, addWidget } = useWidgetStore();
-  // const sensors = useSensors(useSensor(PointerSensor));
+  const { widgets, setWidgets, addWidget, removeWidget } = useWidgetStore();
 
   const sensors = useSensors(
     useSensor(PointerSensor, {
@@ -32,40 +31,24 @@ const WidgetApp = () => {
     if (!over) {
       return;
     }
-    // Nếu widget đã nằm trong dashboard → xử lý sắp xếp
-    // const activeIndex = widgets.findIndex((w) => w.id === active.id);
-    // const overIndex = widgets.findIndex((w) => w.id === over.id);
-
-    // if (activeIndex !== -1 && overIndex !== -1) {
-    //   setWidgets(arrayMove(widgets, activeIndex, overIndex));
-    // } else {
-    //   // Nếu widget chưa có trong dashboard → kéo từ panel vào
-    //   const type = active.id; // active.id chính là "clock" / "weather" v.v. (id ở panel)
-    //   const exists = widgets.some((w) => w.type === type);
-
-    //   if (!exists) {
-    //     setWidgets([...widgets, { id: `${type}-${Date.now()}`, type }]);
-    //   }
-    // }
-
     const draggedId = active.id;
     const droppedOverId = over.id;
-
-    const existing = widgets.find((w) => w.id === draggedId);
-    // Lấy type từ draggedId nếu theo format: `${type}-${uuid}`
     const type = draggedId.split("-")[0];
+    const existing = widgets.find((w) => w.id === draggedId);
 
-    // 🎯 Nếu widget chưa tồn tại (vì đã remove trước đó), thì add mới
-    if (!existing) {
-      addWidget(type); // hoặc addWidget({ id: draggedId, type })
+    if (droppedOverId === "panel-dropzone") {
+      removeWidget(type);
       return;
     }
-
-    // 🧩 Nếu đã tồn tại → xử lý sắp xếp lại
+    //If widget not exist, add new
+    if (!existing) {
+      addWidget(type);
+      return;
+    }
+    // If widget exist, handle sort widget
     if (draggedId !== droppedOverId) {
       const oldIndex = widgets.findIndex((w) => w.id === draggedId);
       const newIndex = widgets.findIndex((w) => w.id === droppedOverId);
-
       setWidgets(arrayMove(widgets, oldIndex, newIndex));
     }
   };
@@ -99,6 +82,7 @@ const WidgetApp = () => {
         sensors={sensors}
         collisionDetection={closestCenter}
         onDragEnd={({ active, over }) => handleDragEnd({ active, over })}
+        autoScroll={true}
       >
         <WidgetPickerPanel mode="drag" />
         <div className="w-full bg-gray-50">

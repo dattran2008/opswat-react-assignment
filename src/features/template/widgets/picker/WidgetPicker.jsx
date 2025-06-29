@@ -1,24 +1,24 @@
 import { useWidgetStore } from "@/store/widget";
-
-const WIDGETS = ["clock", "counter", "weather"];
+import { WIDGETS } from "../../constants";
+import Button from "@/components/Button";
 
 const WidgetPicker = () => {
   const { addWidget, removeWidget, widgets } = useWidgetStore();
 
   return (
     <div className="p-4 flex gap-2 flex-wrap">
-      {WIDGETS.map((w) => {
-        const isAdded = widgets.some((widget) => widget.type === w);
-
+      {WIDGETS.map((widget) => {
+        const isAdded = widgets.some((item) => item.type === widget);
         return (
-          <button
-            key={w}
-            onClick={() => (isAdded ? removeWidget(w) : addWidget(w))}
-            className={`px-3 py-1 rounded text-sm shadow font-medium transition 
-            ${isAdded ? "bg-red-200" : "bg-green-200"}`}
+          <Button
+            key={widget}
+            onClick={() => (isAdded ? removeWidget(widget) : addWidget(widget))}
+            className={`px-3 py-1 text-sm shadow font-medium transition ${
+              isAdded ? "bg-red-200" : "bg-green-200"
+            }`}
           >
-            {isAdded ? `Remove ${w}` : `Add ${w}`}
-          </button>
+            {isAdded ? `Remove ${widget}` : `Add ${widget}`}
+          </Button>
         );
       })}
     </div>

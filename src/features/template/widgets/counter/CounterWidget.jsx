@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { PlusIcon, MinusIcon } from "@heroicons/react/24/outline";
+import Button from "@/components/Button";
 
 const CounterWidget = () => {
   const [count, setCount] = useState(0);
@@ -11,18 +12,12 @@ const CounterWidget = () => {
       </div>
       <p className="text-2xl mb-2">{count}</p>
       <div className="flex gap-2">
-        <button
-          onClick={() => setCount(count - 1)}
-          className="bg-gray-100 p-2 rounded"
-        >
+        <Button onClick={() => setCount(count - 1)} className="bg-gray-100 p-2">
           <MinusIcon className="w-4 h-4" />
-        </button>
-        <button
-          onClick={() => setCount(count + 1)}
-          className="bg-gray-100 p-2 rounded"
-        >
+        </Button>
+        <Button onClick={() => setCount(count + 1)} className="bg-gray-100 p-2">
           <PlusIcon className="w-4 h-4" />
-        </button>
+        </Button>
       </div>
     </div>
   );
